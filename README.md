@@ -1,50 +1,58 @@
-# React + TypeScript + Vite
+# Welcome to ACM@SJSU Dev Team Frontend Interview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This technical interview will test your understanding of React, Typescript, CSS, and Forms.
 
-Currently, two official plugins are available:
+The goal of this interview is for you to develop a functional and well-styled form that accepts user input and handles the form submission.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+We encourage you to focus on:
+- **Component structure**: Organizing the form into reusable components
+- **State management**: Handling user input and form validation
+- **Styling**: Writing clean, maintainable css
+- **Best practices**: Writing clean and readable code
 
-## Expanding the ESLint configuration
+## Project Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You are developing a professor rating web application for SJSU, similar to Rate My Professor. This application allows users to log in and submit reviews for professors based on the courses they have taken.
+Your task is to build a form that allows users to submit their professor reviews.
 
-- Configure the top-level `parserOptions` property like this:
+The form will include the following inputs:
+- **Professor**
+  - Type: Select
+  - Options data: string[] (provided)
+- **Course**
+  - Type: Select
+  - Options data: string[] (provided)
+- **Rating**
+  - Type: Number
+  - Min: 1
+  - Max: 5
+- **Grade**
+  - Type: Select
+  - Options data: Grade[] (provided)
+- **Tags**
+  - Type: Checkbox
+  - Options data: Tag[] (provided)
+- **Take professor again**
+  - Type: Radio
+  - Options: "Yes" | "No"
+- **Review**
+  - Type: Text
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+All the input fields are required.
+
+The form should have a `Submit` button that will invoke a form handler `onSubmit`. The form handler must validate the data and transform the user input into a type that the backend endpoint accepts:
+```ts
+type Review = {
+  professorName: string;
+  courseName: string;
+  rating: number;
+  grade: Grade;
+  tags: Tag[];
+  takeAgain: boolean;
+  content: string;
+}
 ```
+Once the input data is transformed into a `Review` type, `console.log` the transformed data.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Styling
+The form should be centered horizontally and vertically on the page.
