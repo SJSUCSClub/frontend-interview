@@ -8,7 +8,6 @@ type Review = {
   rating: number;
   grade: Grade;
   tags: Tag[];
-  takeAgain: boolean;
   content: string;
 }
 

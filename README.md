@@ -32,9 +32,6 @@ The form will include the following inputs:
 - **Tags**
   - Type: Checkbox
   - Options data: Tag[] (provided)
-- **Take professor again**
-  - Type: Radio
-  - Options: "Yes" | "No"
 - **Review**
   - Type: Text
 
@@ -48,7 +45,6 @@ type Review = {
   rating: number;
   grade: Grade;
   tags: Tag[];
-  takeAgain: boolean;
   content: string;
 }
 ```
